@@ -1,0 +1,18 @@
+[
+  {
+    "id": "A01",
+    "group": "A",
+    "title": "Prosperous Farms",
+    "description": "Have at least 3 farm buildings.",
+    "points": 15,
+    "requiresTeaTrade": false
+  },
+  {
+    "id": "B01",
+    "group": "B",
+    "title": "Livestock Master",
+    "description": "Own at least 5 livestock.",
+    "points": 8,
+    "requiresTeaTrade": false
+  }
+]
