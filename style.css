@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
+
+header {
+  background: #2f5d50;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+main {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #3a7d6c;
+  color: white;
+}
+
+button:hover {
+  background: #2f5d50;
+}
+
+#cards {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.placeholder {
+  color: #666;
+}
+
+footer {
+  margin-top: 3rem;
+  padding: 1rem;
+  font-size: 0.75rem;
+  text-align: center;
+  color: #555;
+}
