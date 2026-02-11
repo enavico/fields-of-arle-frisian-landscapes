@@ -1,12 +1,21 @@
-// Mazzi
+// ----------------------------
+// Mazzi di carte
+// ----------------------------
 const deckA = Array.from({ length: 16 }, (_, i) => `assets/cards/A/Front_A_${String(i + 1).padStart(2, "0")}.png`);
 const deckB = Array.from({ length: 16 }, (_, i) => `assets/cards/B/Front_B_${String(i + 1).padStart(2, "0")}.png`);
 const deckC = Array.from({ length: 16 }, (_, i) => `assets/cards/C/Front_C_${String(i + 1).padStart(2, "0")}.png`);
 
+// ----------------------------
+// Elementi DOM
+// ----------------------------
 const cardsContainer = document.getElementById("cards");
 const randomizeBtn = document.getElementById("randomizeBtn");
 
-// Pesca una carta casuale
+// ----------------------------
+// Funzioni
+// ----------------------------
+
+// Pesca una carta casuale da un mazzo
 function drawOne(deck) {
   return deck[Math.floor(Math.random() * deck.length)];
 }
@@ -22,7 +31,7 @@ function showCards(cards) {
   });
 }
 
-// Randomizza e salva su localStorage
+// Randomizza le carte e salva in localStorage
 function randomizeCards() {
   const drawn = [
     drawOne(deckA),
@@ -37,7 +46,7 @@ function randomizeCards() {
   console.log("Carte salvate in localStorage:", drawn);
 }
 
-// Carica carte salvate all’avvio
+// Carica le carte salvate all’avvio
 function loadLastDraw() {
   const saved = localStorage.getItem("lastDrawnCards");
   if (saved) {
@@ -49,8 +58,8 @@ function loadLastDraw() {
   }
 }
 
+// ----------------------------
 // Event listener
+// ----------------------------
 randomizeBtn.addEventListener("click", randomizeCards);
-
-// Al caricamento della pagina
 window.addEventListener("load", loadLastDraw);
