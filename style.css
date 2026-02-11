@@ -101,14 +101,16 @@ footer {
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
+/* --- Pulsante Randomize Setup --- */
 #randomizeBtn {
   display: block;
-  margin: 0.5rem auto;      /* ridotto da 1rem a 0.5rem sopra il pulsante */
+  margin: 0.5rem auto;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
+  font-weight: bold;       /* grassetto */
   border-radius: 6px;
   border: none;
-  background-color: #8B5E3C; 
+  background-color: #8B5E3C; /* marrone come le carte */
   color: white;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
@@ -118,12 +120,6 @@ footer {
 #randomizeBtn:hover {
   transform: scale(1.05);
   background-color: #A06B4B;
-}
-
-
-#randomizeBtn:hover {
-  transform: scale(1.05);
-  background-color: #A06B4B; /* leggermente più chiaro al passaggio del mouse */
 }
 
 footer a {
@@ -136,13 +132,23 @@ footer a:hover {
   text-decoration: underline; /* sottolineatura solo al passaggio del mouse */
 }
 
+/* --- Nome dell'espansione in marrone --- */
+.expansion-name {
+  color: #8B5E3C; /* stesso marrone del pulsante */
+}
+
+/* --- Footer --- */
 footer p {
-  font-size: 0.70rem;        /* leggermente più piccolo */
-  color: #666666;            /* grigio chiaro */
-  text-align: center;         /* centrato */
-  line-height: 1.4;           /* distanza tra righe leggibile */
-  margin-top: 2rem;           /* spazio sopra il footer */
-  margin-bottom: 1rem;        /* piccolo spazio sotto */
+  color: #777;          /* grigio chiaro */
+  font-size: 0.8rem;    /* più piccolo */
+  text-align: center;
+  margin: 1.5rem 1rem;
+}
+
+/* --- Link nel footer / BGG --- */
+.subtitle a {
+  color: #0077cc;
+  text-decoration: underline;
 }
 
 /* Solo desktop: schermi larghi almeno 1024px */
@@ -156,23 +162,4 @@ footer p {
   .card-image {
     max-width: 180px;  /* 150px * 1.2 */
   }
-}
-
-#shareBtn {
-  display: block;
-  margin: 0.5rem auto;      /* centrato e poco spazio sopra/sotto */
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: none;
-  background-color: #8B5E3C; 
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s, background-color 0.2s;
-}
-
-#shareBtn:hover {
-  transform: scale(1.05);
-  background-color: #A06B4B;
 }
