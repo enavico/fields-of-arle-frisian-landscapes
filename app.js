@@ -1,28 +1,20 @@
-// ===== MAZZI CON NOMI REALI =====
+// Mazzi
 const deckA = Array.from({ length: 16 }, (_, i) => `assets/cards/A/Front_A_${String(i + 1).padStart(2, "0")}.png`);
 const deckB = Array.from({ length: 16 }, (_, i) => `assets/cards/B/Front_B_${String(i + 1).padStart(2, "0")}.png`);
 const deckC = Array.from({ length: 16 }, (_, i) => `assets/cards/C/Front_C_${String(i + 1).padStart(2, "0")}.png`);
 
-// ===== CONTAINER E BOTTONE =====
 const cardsContainer = document.getElementById("cards");
 const randomizeBtn = document.getElementById("randomizeBtn");
 
-// ===== FUNZIONE PER PESCARE 1 CARTA DA UN MAZZO =====
+// Pesca una carta casuale
 function drawOne(deck) {
   return deck[Math.floor(Math.random() * deck.length)];
 }
 
-// ===== FUNZIONE PRINCIPALE: PESCA 1 CARTA DA OGNUNO DEI TRE MAZZI =====
-function randomizeCards() {
-  cardsContainer.innerHTML = ""; // reset del container
-
-  const drawn = [
-    drawOne(deckA),
-    drawOne(deckB),
-    drawOne(deckC),
-  ];
-
-  drawn.forEach(card => {
+// Mostra le carte nel container
+function showCards(cards) {
+  cardsContainer.innerHTML = "";
+  cards.forEach(card => {
     const img = document.createElement("img");
     img.src = card;
     img.className = "card-image";
@@ -30,5 +22,31 @@ function randomizeCards() {
   });
 }
 
-// ===== EVENT LISTENER SUL BOTTONE =====
+// Randomizza e salva su localStorage
+function randomizeCards() {
+  const drawn = [
+    drawOne(deckA),
+    drawOne(deckB),
+    drawOne(deckC),
+  ];
+
+  showCards(drawn);
+
+  // salva le carte nel browser
+  localStorage.setItem("lastDrawnCards", JSON.stringify(drawn));
+}
+
+// Carica carte salvate all’avvio
+function loadLastDraw() {
+  const saved = localStorage.getItem("lastDrawnCards");
+  if (saved) {
+    const cards = JSON.parse(saved);
+    showCards(cards);
+  }
+}
+
+// Event listener
 randomizeBtn.addEventListener("click", randomizeCards);
+
+// Al caricamento della pagina
+window.addEventListener("load", loadLastDraw);
