@@ -1,38 +1,34 @@
-const button = document.getElementById("randomizeBtn");
+// ===== MAZZI CON NOMI REALI =====
+const deckA = Array.from({ length: 16 }, (_, i) => `assets/cards/A/Front_A_${String(i + 1).padStart(2, "0")}.png`);
+const deckB = Array.from({ length: 16 }, (_, i) => `assets/cards/B/Front_B_${String(i + 1).padStart(2, "0")}.png`);
+const deckC = Array.from({ length: 16 }, (_, i) => `assets/cards/C/Front_C_${String(i + 1).padStart(2, "0")}.png`);
+
+// ===== CONTAINER E BOTTONE =====
 const cardsContainer = document.getElementById("cards");
+const randomizeBtn = document.getElementById("randomizeBtn");
 
-let allCards = [];
-
-fetch("cards.json")
-  .then(response => response.json())
-  .then(data => {
-    allCards = data;
-  });
-
-function shuffle(array) {
-  return [...array].sort(() => Math.random() - 0.5);
+// ===== FUNZIONE PER PESCARE 1 CARTA DA UN MAZZO =====
+function drawOne(deck) {
+  return deck[Math.floor(Math.random() * deck.length)];
 }
 
-button.addEventListener("click", () => {
-  if (allCards.length === 0) return;
+// ===== FUNZIONE PRINCIPALE: PESCA 1 CARTA DA OGNUNO DEI TRE MAZZI =====
+function randomizeCards() {
+  cardsContainer.innerHTML = ""; // reset del container
 
-  const groupA = allCards.filter(c => c.group === "A");
-  const groupB = allCards.filter(c => c.group === "B");
-
-  const selected = [
-    shuffle(groupA)[0],
-    shuffle(groupB)[0]
+  const drawn = [
+    drawOne(deckA),
+    drawOne(deckB),
+    drawOne(deckC),
   ];
 
-  cardsContainer.innerHTML = "";
-  selected.forEach(card => {
-    const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `
-      <h3>${card.title}</h3>
-      <p>${card.description}</p>
-      <strong>${card.points} points</strong>
-    `;
-    cardsContainer.appendChild(div);
+  drawn.forEach(card => {
+    const img = document.createElement("img");
+    img.src = card;
+    img.className = "card-image";
+    cardsContainer.appendChild(img);
   });
-});
+}
+
+// ===== EVENT LISTENER SUL BOTTONE =====
+randomizeBtn.addEventListener("click", randomizeCards);
