@@ -129,3 +129,12 @@ footer a {
 footer a:hover {
   text-decoration: underline; /* sottolineatura solo al passaggio del mouse */
 }
+
+footer p {
+  font-size: 0.85rem;        /* leggermente più piccolo */
+  color: #666666;            /* grigio chiaro */
+  text-align: center;         /* centrato */
+  line-height: 1.4;           /* distanza tra righe leggibile */
+  margin-top: 2rem;           /* spazio sopra il footer */
+  margin-bottom: 1rem;        /* piccolo spazio sotto */
+}
