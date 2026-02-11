@@ -25,8 +25,10 @@ header .subtitle {
 .header-banner {
   max-width: 100%;
   height: auto;
-  display: block;
-  margin: 1rem auto;
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 12px;          /* angoli stondati come le carte */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25); /* leggero effetto rilievo */
 }
 
 .subtitle {
