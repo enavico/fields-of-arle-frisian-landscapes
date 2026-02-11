@@ -103,17 +103,23 @@ footer {
 
 #randomizeBtn {
   display: block;
-  margin: 1rem auto;
+  margin: 0.5rem auto;      /* ridotto da 1rem a 0.5rem sopra il pulsante */
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
   border-radius: 6px;
   border: none;
-  background-color: #8B5E3C; /* marrone simile al tavolo / carte */
+  background-color: #8B5E3C; 
   color: white;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
   transition: transform 0.2s, background-color 0.2s;
 }
+
+#randomizeBtn:hover {
+  transform: scale(1.05);
+  background-color: #A06B4B;
+}
+
 
 #randomizeBtn:hover {
   transform: scale(1.05);
