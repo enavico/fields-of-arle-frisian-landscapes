@@ -1,26 +1,17 @@
-// ----------------------------
 // Mazzi di carte
-// ----------------------------
-const deckA = Array.from({ length: 16 }, (_, i) => `assets/cards/A/Front_A_${String(i + 1).padStart(2, "0")}.png`);
-const deckB = Array.from({ length: 16 }, (_, i) => `assets/cards/B/Front_B_${String(i + 1).padStart(2, "0")}.png`);
-const deckC = Array.from({ length: 16 }, (_, i) => `assets/cards/C/Front_C_${String(i + 1).padStart(2, "0")}.png`);
+const deckA = Array.from({ length: 16 }, (_, i) => String(i + 1).padStart(2, "0"));
+const deckB = Array.from({ length: 16 }, (_, i) => String(i + 1).padStart(2, "0"));
+const deckC = Array.from({ length: 16 }, (_, i) => String(i + 1).padStart(2, "0"));
 
-// ----------------------------
-// Elementi DOM
-// ----------------------------
 const cardsContainer = document.getElementById("cards");
 const randomizeBtn = document.getElementById("randomizeBtn");
 
-// ----------------------------
-// Funzioni
-// ----------------------------
-
-// Pesca una carta casuale da un mazzo
-function drawOne(deck) {
-  return deck[Math.floor(Math.random() * deck.length)];
+// Costruisci percorso immagine da mazzo e numero
+function getCardImage(deck, num) {
+  return `assets/cards/${deck}/Front_${deck}_${num}.png`;
 }
 
-// Mostra le carte nel container
+// Mostra le carte
 function showCards(cards) {
   cardsContainer.innerHTML = "";
   cards.forEach(card => {
@@ -31,35 +22,52 @@ function showCards(cards) {
   });
 }
 
-// Randomizza le carte e salva in localStorage
+// Pesca casualmente
+function drawOne(deck) {
+  return deck[Math.floor(Math.random() * deck.length)];
+}
+
+// Randomizza carte e aggiorna URL
 function randomizeCards() {
+  const a = drawOne(deckA);
+  const b = drawOne(deckB);
+  const c = drawOne(deckC);
+
   const drawn = [
-    drawOne(deckA),
-    drawOne(deckB),
-    drawOne(deckC),
+    getCardImage("A", a),
+    getCardImage("B", b),
+    getCardImage("C", c)
   ];
 
   showCards(drawn);
 
-  // salva le carte nel browser
-  localStorage.setItem("lastDrawnCards", JSON.stringify(drawn));
-  console.log("Carte salvate in localStorage:", drawn);
+  // Aggiorna URL
+  const newUrl = `${location.origin}${location.pathname}?a=${a}&b=${b}&c=${c}`;
+  history.replaceState(null, '', newUrl);
 }
 
-// Carica le carte salvate all’avvio
-function loadLastDraw() {
-  const saved = localStorage.getItem("lastDrawnCards");
-  if (saved) {
-    const cards = JSON.parse(saved);
-    showCards(cards);
-    console.log("Carte caricate da localStorage:", cards);
-  } else {
-    console.log("Nessuna carta salvata in localStorage");
+// Carica setup da URL se presente
+function loadFromUrl() {
+  const params = new URLSearchParams(location.search);
+  let a = params.get("a");
+  let b = params.get("b");
+  let c = params.get("c");
+
+  if (!a || !b || !c) {
+    // Nessun setup in URL, pesca a caso
+    randomizeCards();
+    return;
   }
+
+  const drawn = [
+    getCardImage("A", a),
+    getCardImage("B", b),
+    getCardImage("C", c)
+  ];
+
+  showCards(drawn);
 }
 
-// ----------------------------
 // Event listener
-// ----------------------------
 randomizeBtn.addEventListener("click", randomizeCards);
-window.addEventListener("load", loadLastDraw);
+window.addEventListener("load", loadFromUrl);
