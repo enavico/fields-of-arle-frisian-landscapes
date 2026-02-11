@@ -117,3 +117,13 @@ footer {
   transform: scale(1.05);
   background-color: #A06B4B; /* leggermente più chiaro al passaggio del mouse */
 }
+
+footer a {
+  color: #8B5E3C;       /* marrone simile al pulsante/carte */
+  text-decoration: none; /* niente sottolineatura */
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline; /* sottolineatura solo al passaggio del mouse */
+}
