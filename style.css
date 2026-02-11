@@ -98,3 +98,21 @@ footer {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
+
+#randomizeBtn {
+  display: block;       /* rende il pulsante un blocco */
+  margin: 1rem auto;    /* auto-centra orizzontalmente */
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #4CAF50; /* verde BGG-style, cambia se vuoi */
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+#randomizeBtn:hover {
+  transform: scale(1.05);
+}
