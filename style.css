@@ -140,9 +140,10 @@ footer a:hover {
 /* --- Footer --- */
 footer p {
   color: #777;          /* grigio chiaro */
-  font-size: 0.8rem;    /* più piccolo */
+  font-size: 0.75rem;   /* leggermente più piccolo */
   text-align: center;
   margin: 1.5rem 1rem;
+  font-style: italic;   /* corsivo */
 }
 
 /* --- Link nel footer / BGG --- */
