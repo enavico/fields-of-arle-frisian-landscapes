@@ -100,19 +100,20 @@ footer {
 }
 
 #randomizeBtn {
-  display: block;       /* rende il pulsante un blocco */
-  margin: 1rem auto;    /* auto-centra orizzontalmente */
+  display: block;
+  margin: 1rem auto;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
   border-radius: 6px;
   border: none;
-  background-color: #4CAF50; /* verde BGG-style, cambia se vuoi */
+  background-color: #8B5E3C; /* marrone simile al tavolo / carte */
   color: white;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
+  transition: transform 0.2s, background-color 0.2s;
 }
 
 #randomizeBtn:hover {
   transform: scale(1.05);
+  background-color: #A06B4B; /* leggermente più chiaro al passaggio del mouse */
 }
