@@ -180,3 +180,13 @@ footer p {
 .bgg-link:hover {
   color: #8B5E3C !important;       /* cambia tonalità al passaggio del mouse */
 }
+
+.options {
+  text-align: center;
+  margin: 0.5rem 0 1rem 0;
+  font-size: 0.95rem;
+}
+
+.options label {
+  cursor: pointer;
+}
